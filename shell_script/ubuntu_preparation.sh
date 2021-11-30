@@ -12,7 +12,9 @@ alias unpad='sudo umount -f ~/sshfs/npad-home | sudo umount -f ~/sshfs/npad-scra
 alias uleuven='sudo umount ~/sshfs/leuven'
 alias umacken='sudo umount ~/sshfs/mackenzie'
 alias usdumont='sudo vpnc-disconnect | sudo umount ~/sshfs/sdumont-home | sudo umount -f ~/sshfs/sdumont-scratch'
-alias uogun='sudo umount -f ~/sshfs/ogun-home | sudo umount -f ~/sshfs/ogun-scratch'" >> /home/$USER/.bashrc;
+alias uogun='sudo umount -f ~/sshfs/ogun-home | sudo umount -f ~/sshfs/ogun-scratch'
+alias firessh='ssh -N -D 9090 -o ConnectTimeout=99'
+" >> /home/$USER/.bashrc;
 
 mkdir ~/.ssh; wait
 echo "Host yemoja
@@ -85,6 +87,9 @@ sudo snap install rambox; wait
 #Python-PIP
 sudo apt install python3-pip; wait
 
+#OpenMPI
+sudo apt-get install openmpi-bin; wait
+
 #Ocamlfuse
 sudo add-apt-repository ppa:alessandro-strada/ppa; wait
 sudo apt-get update; wait
@@ -96,5 +101,6 @@ sed -i 's+root_folder=.*+root_folder=1Kx_m9h2yWw9e0G2Br-u_S9GyGIWdLmMN+g' ~/.gdf
 sudo chmod 777 /etc/init.d/jbInit.sh; wait
 sudo echo "google-drive-ocamlfuse ~/Documents/; wait" >> /etc/init.d/jbInit.sh; wait
 
-
+#Slack
+sudo snap install slack --classic
 
