@@ -1,6 +1,7 @@
 from IPython.display import display, HTML
 import plotly.graph_objects as go
 import plotly.express as px
+import plotly.io as pio
 import pandas as pd
 import math
 import sys
@@ -28,15 +29,18 @@ def report_block_template(report_type, graph_url, caption=''):
     return report_block.format(graph_url=graph_url, caption=caption)
 
 
-long_df = pd.read_csv(sys.argv[1],index_col=1, header=None, sep=" ")
-long_df = long_df.div(3600)
-#print("Value maximum: ", long_df.max())
+long_df = pd.read_csv(sys.argv[1],index_col=0, header=None, sep=" ")
+long_df = long_df.div(60)
+#long_df = long_df.iloc[: , 1:]
 
-fig = px.bar(long_df, orientation='h', color_discrete_sequence=px.colors.qualitative.Vivid)
+#fig = px.bar(long_df, orientation='h', color_discrete_sequence=px.colors.qualitative.Vivid)
+fig = px.bar(long_df, orientation='h', color_discrete_sequence=['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A'])#, '#19D3F3', '#FF6692', '#B6E880', '#FF97FF', '#FECB52'])
 fig.update_layout(showlegend=False)
 fig.update_layout(title=sys.argv[2], font=dict( family="Arial", size=12, color="Black" ) )
 fig.update_layout(yaxis=dict(title='Process',tickmode='linear'))
-fig.update_layout(xaxis=dict(title='Time (h)',range=[0,9]))
+fig.update_layout(xaxis=dict(title='Time (min)'))
+fig.update_xaxes(range=[0, int(sys.argv[3])])
+pio.write_image(fig, sys.argv[4]+".png")
 fig.show()
 
 graph_url='http://127.0.0.1:44539/'
