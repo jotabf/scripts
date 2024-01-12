@@ -47,7 +47,6 @@ Host sasha
 
 sudo touch /etc/init.d/jbInit.sh; wait
 
-
 ##Install Programs##
 sudo apt update; wait
 sudo apt install apt-transport-https ca-certificates wget software-properties-common; wait
@@ -79,10 +78,10 @@ sudo apt install xterm; wait
 sudo apt install sshfs; wait
 
 #Mendelay
-xdg-open https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest/; wait
+#xdg-open https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest/; wait
 
 #Rambox
-sudo snap install rambox; wait
+#sudo snap install rambox; wait
 
 #Python-PIP
 sudo apt install python3-pip; wait
@@ -91,16 +90,19 @@ sudo apt install python3-pip; wait
 sudo apt-get install openmpi-bin; wait
 
 #Ocamlfuse
-sudo add-apt-repository ppa:alessandro-strada/ppa; wait
-sudo apt-get update; wait
-sudo apt-get install google-drive-ocamlfuse; wait
+#sudo add-apt-repository ppa:alessandro-strada/ppa; wait
+#sudo apt-get update; wait
+#sudo apt-get install google-drive-ocamlfuse; wait
 
-google-drive-ocamlfuse ~/Documents/; wait
-sed -i 's+root_folder=.*+root_folder=1Kx_m9h2yWw9e0G2Br-u_S9GyGIWdLmMN+g' ~/.gdfuse/default/config; wait
+#google-drive-ocamlfuse ~/Documents/; wait
+#sed -i 's+root_folder=.*+root_folder=1Kx_m9h2yWw9e0G2Br-u_S9GyGIWdLmMN+g' ~/.gdfuse/default/config; wait
 
-sudo chmod 777 /etc/init.d/jbInit.sh; wait
-sudo echo "google-drive-ocamlfuse ~/Documents/; wait" >> /etc/init.d/jbInit.sh; wait
+#sudo chmod 777 /etc/init.d/jbInit.sh; wait
+#sudo echo "google-drive-ocamlfuse ~/Documents/; wait" >> /etc/init.d/jbInit.sh; wait
 
 #Slack
 sudo snap install slack --classic
+
+#inSync 
+sudo apt install insync
 
